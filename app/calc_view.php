@@ -13,7 +13,7 @@
 	<label for="id_lata" >Na ile lat:</label>
 	<input  id="id_lata" type="text" name="lata" value="<?php if(isset($lata))print($lata); ?>" /><br/>
 	
-	<label for="id_oprocentowanie" >Oprocentowanie</label>
+	<label for="id_oprocentowanie" >Oprocentowanie (w procentach)</label>
 	<input  id="id_oprocentowanie" type="text" name="oprocentowanie" value="<?php if(isset($oprocentowanie))print($oprocentowanie); ?>"/><br/>
 	
 	<input type="submit" value="Oblicz" />
@@ -34,7 +34,7 @@ if (isset($messages)) {
 
 <?php if (isset($result)){ ?>
 <div style="margin: 20px; padding: 10px; border-radius: 5px; background-color: #ff0; width:300px;">
-<?php echo 'Wynik: '.$result; ?>
+<?php echo 'Rata miesięczna: '.$result; ?>
 </div>
 <?php } ?>
 
