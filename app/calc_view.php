@@ -3,9 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <title>Kalkulator Kredytowy</title>
+	<link rel="stylesheet" href="calc.css">
 </head>
 <body>
 
+<div id="id_calc">
 <form action="<?php print(_APP_URL);?>/app/calc.php" method="post">
 	<label for="id_kwota" >Kwota: </label>
 	<input  id="id_kwota" type="text" name="kwota" value="<?php if(isset($kwota))print($kwota); ?>" /><br />
@@ -23,7 +25,7 @@
 //wyświeltenie listy błędów, jeśli istnieją
 if (isset($messages)) {
 	if (count ( $messages ) > 0) {
-		echo '<ol style="margin: 20px; padding: 10px 10px 10px 30px; border-radius: 5px; background-color: #f88; width:300px;">';
+		echo '<ol id="id_errors">';
 		foreach ( $messages as $key => $msg ) {
 			echo '<li>'.$msg.'</li>';
 		}
@@ -33,11 +35,12 @@ if (isset($messages)) {
 ?>
 
 <?php if (isset($result)){ ?>
-<div style="margin: 20px; padding: 10px; border-radius: 5px; background-color: #ff0; width:300px;">
+<div id="id_results">
 <?php echo 'Rata miesięczna: '.$result; ?>
 </div>
 <?php } ?>
 
+</div>
 
 </body>
 </html>
