@@ -7,6 +7,8 @@
 </head>
 <body>
 
+<h1>Kalkulator Kredytowy</h1>
+
 <div id="id_calc">
 <form action="<?php print(_APP_URL);?>/app/calc.php" method="post">
 	<label for="id_kwota" >Kwota: </label>
@@ -41,6 +43,8 @@ if (isset($messages)) {
 <?php } ?>
 
 </div>
+
+<div id="disclaimer">Powyższy kalkulator może nie przedstawiać poprawnych wyników i został stworzony jedynie na potrzeby zajęć z języka PHP w celu ćwiczeń.</div>
 
 </body>
 </html>

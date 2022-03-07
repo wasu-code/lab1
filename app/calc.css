@@ -3,6 +3,23 @@ body {
     background-color: #333;
 }
 
+h1 {
+    text-align: center;
+    text-decoration:underline;
+    font-family: 'Courier New', Courier, monospace;
+    color: whitesmoke;
+}
+
+input {
+    background-color: antiquewhite;
+    width: 100px;
+}
+
+input[type=submit] {
+    background-color:rgb(189, 189, 189) ;
+    width: 107px;
+}
+
 #id_calc {
     float: right;
     margin-top: 30vh;
@@ -29,4 +46,15 @@ body {
     border-radius: 5px; 
     background-color: #f88; 
     width:300px;
+}
+
+#disclaimer {
+    position: fixed;
+    bottom: 8px;
+    left: 0;
+    background-color: gray;
+    color:black;
+    font-size: small;
+    width: 100%;
+    padding: 3px;
 }
