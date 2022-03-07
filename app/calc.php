@@ -9,7 +9,7 @@ if (!(isset($kwota)&&isset($lata)&&isset($oprocentowanie))) {
     $messages[]="Błąd: Brak jakiegoś parametru";
 }
 
-if ($kwota=="") {
+if ($kwota=="") { 
     $messages[]="Nie podano kwoty";
 }
 if ($lata=="") {
