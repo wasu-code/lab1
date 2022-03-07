@@ -19,7 +19,7 @@ if ($oprocentowanie=="") {
     $messages[]="Nie podano oprocentowania";
 }
 
-//jeśli nie ma błędów
+//jeśli nie ma błędów - sprawdzenie czy wartości liczbowe
 if (empty($messages)) {
     if (! is_numeric($kwota)) {
         $messages[]="Kwota nie jest liczbą";
@@ -32,6 +32,7 @@ if (empty($messages)) {
     }
 }
 
+//jeśli nie ma błędów - obliczenia
 if (empty($messages)) {
     $kwota=round(floatval($kwota),2);
     $lata=round(floatval($lata),2);
