@@ -2,7 +2,7 @@
 require_once dirname(__FILE__).'/../config.php';
 
 $kwota = $_REQUEST['kwota'];
-$lata = $_REQUEST['lata'];
+$lata = $_REQUEST['lata']; 
 $oprocentowanie = $_REQUEST['oprocentowanie'];
 
 if (!(isset($kwota)&&isset($lata)&&isset($oprocentowanie))) {
