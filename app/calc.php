@@ -63,13 +63,17 @@ function validate(&$kwota,&$lata,&$oprocentowanie,&$messages) {
 
 //jeśli nie ma błędów - obliczenia
 function process(&$kwota,&$lata,&$oprocentowanie,&$messages,&$result) {
-    //++global $role;
-    $kwota=round(floatval($kwota),2);
-    $lata=round(floatval($lata),2);
-    $oprocentowanie=floatval($oprocentowanie);
-    //obliczenia
-    $result=($kwota+$kwota*$oprocentowanie/100)/($lata*12);
-    $result=round($result,2);
+    global $role;
+    if ($role=='admin') {
+        $messages[]='Administrator nie powinien wykonywać obliczeń. Użyj konta gościa';
+    } else {
+        $kwota=round(floatval($kwota),2);
+        $lata=round(floatval($lata),2);
+        $oprocentowanie=floatval($oprocentowanie);
+        //obliczenia
+        $result=($kwota+$kwota*$oprocentowanie/100)/($lata*12);
+        $result=round($result,2);
+    }
 }
 
 
