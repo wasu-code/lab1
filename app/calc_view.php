@@ -3,14 +3,21 @@
 <head>
     <meta charset="utf-8" />
     <title>Kalkulator Kredytowy</title>
-	<link rel="stylesheet" href="calc.css">
+	<link rel="stylesheet" href="<?php print(_APP_URL)?>/app/calc.css">
+	<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
 </head>
 <body>
 
 <h1>Kalkulator Kredytowy</h1>
+<div>Zalogowano jako: <?php print($role)?></div>
+
+<div>
+	<a href="<?php print(_APP_ROOT); ?>/app/inna_chroniona.php" class="pure-button">kolejna chroniona strona</a>
+	<a href="<?php print(_APP_ROOT); ?>/app/security/logout.php" class="pure-button pure-button-active">Wyloguj</a>
+</div>
 
 <div id="id_calc">
-<form action="<?php print(_APP_URL);?>/app/calc.php" method="post">
+<form action="<?php print(_APP_ROOT);?>/app/calc.php" method="post">
 	<label for="id_kwota" >Kwota: </label>
 	<input  id="id_kwota" type="text" name="kwota" value="<?php if(isset($kwota))print($kwota); ?>" /><br />
 	
