@@ -26,7 +26,7 @@ function getParams(&$kwota,&$lata,&$oprocentowanie) {
 
 function validate(&$kwota,&$lata,&$oprocentowanie,&$messages) {
     if (!(isset($kwota)&&isset($lata)&&isset($oprocentowanie))) {
-        $messages[]="Błąd: Brak jakiegoś parametru";
+        //$messages[]="Błąd: Brak jakiegoś parametru";
         return false;
     }
 
