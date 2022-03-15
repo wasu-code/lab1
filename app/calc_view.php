@@ -1,20 +1,8 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
-<head>
-    <meta charset="utf-8" />
-    <title>Kalkulator Kredytowy</title>
-	<link rel="stylesheet" href="<?php print(_APP_URL)?>/app/calc.css">
-	<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
-</head>
-<body>
+<?php //góra strony z szablonu 
+include _ROOT_PATH.'/templates/top.php';
+?>
 
-<h1>Kalkulator Kredytowy</h1>
-<div>Zalogowano jako: <?php print($role)?></div>
 
-<div>
-	<a href="<?php print(_APP_ROOT); ?>/app/inna_chroniona.php" class="pure-button">kolejna chroniona strona</a>
-	<a href="<?php print(_APP_ROOT); ?>/app/security/logout.php" class="pure-button pure-button-active">Wyloguj</a>
-</div>
 
 <div id="id_calc">
 <form action="<?php print(_APP_ROOT);?>/app/calc.php" method="post">
@@ -51,8 +39,8 @@ if (isset($messages)) {
 
 </div>
 
-<div id="disclaimer">Powyższy kalkulator może nie przedstawiać poprawnych wyników i został stworzony jedynie na potrzeby zajęć z języka PHP w celu ćwiczeń.</div>
 
-</body>
-</html>
+<?php 
+include _ROOT_PATH.'/templates/bottom.php';
+?>
 
