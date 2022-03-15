@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Logowanie</title>
+	<link rel="stylesheet" href="<?php print(_APP_URL)?>/main.css">
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 </head>
 <body>
@@ -24,7 +25,7 @@
 //wyświeltenie listy błędów, jeśli istnieją
 if (isset($messages)) {
 	if (count ( $messages ) > 0) {
-		echo '<ol style="padding: 10px 10px 10px 30px; border-radius: 5px; background-color: #f88; width:300px;">';
+		echo '<ol id="id_errors">';
 		foreach ( $messages as $key => $msg ) {
 			echo '<li>'.$msg.'</li>';
 		}
