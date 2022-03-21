@@ -28,3 +28,8 @@ form.pure-form input{
     background-color: rgb(89, 231, 23); 
     width:300px;
 }
+
+#disclaimer {
+    text-align: center;
+    background-color: rgba(32, 185, 206, 0.2);
+}
