@@ -2,8 +2,6 @@
 require_once dirname(__FILE__).'/../config.php';
 require_once _ROOT_PATH.'/lib/smarty/Smarty.class.php';
 
-include _ROOT_PATH.'/app/security/check.php';
-
 $params=array();
 $messages=array();
 $result=null;

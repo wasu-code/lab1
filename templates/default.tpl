@@ -25,7 +25,7 @@
             <nav id="nav">
                 <ul>
                     <li ><a href="{$app_url}">Kalkulator</a></li>
-                    <li ><a href="{$app_url}/app/about.php">Inna Strona</a></li>
+                    <li ><a href="{$app_url}/app/about.php">O nas</a></li>
                     <li class="current"><a href="{$app_url}/app/security/logout.php">Wyloguj</a></li>
                 </ul>
             </nav>
