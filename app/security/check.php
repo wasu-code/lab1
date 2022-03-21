@@ -1,7 +1,10 @@
 <?php
 require_once dirname(__FILE__).'/../../config.php';
 
-session_start();
+if (session_status() === PHP_SESSION_NONE ) {
+	session_start();
+}
+
 
 //pobranie roli
 $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';

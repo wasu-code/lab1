@@ -2,7 +2,7 @@
 			</div>
 			<!-- Footer -->
             <div id="footer">
-				<div id="disclaimer">Powyższy kalkulator może nie przedstawiać poprawnych wyników i został stworzony jedynie na potrzeby zajęć z języka PHP w celu ćwiczeń.</div>
+				<div id="disclaimer"> 🛈 Powyższy kalkulator może nie przedstawiać poprawnych wyników i został stworzony jedynie w celach edukacyjnych.</div>
 
 
 

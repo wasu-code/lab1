@@ -1,4 +1,4 @@
-body {
+/*body {
     color:aliceblue;
     background-color: #333;
 }
@@ -9,7 +9,7 @@ body {
 
 form.pure-form input{
     color:black;
-}
+}*/
 
 #id_errors{
     color: black;
@@ -17,5 +17,14 @@ form.pure-form input{
     padding: 10px 10px 10px 30px; 
     border-radius: 5px; 
     background-color: #f88; 
+    width:300px;
+}
+
+#id_results {
+    color: black;
+    margin: 20px; 
+    padding: 10px; 
+    border-radius: 5px; 
+    background-color: rgb(89, 231, 23); 
     width:300px;
 }
