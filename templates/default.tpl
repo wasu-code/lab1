@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="{$app_url}/templates/assets/css/main.css" />
     <link rel="stylesheet" href="{$app_url}/main.css" />
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 </head>
 
 <body class="is-preload">
@@ -18,7 +19,7 @@
             <h1><a href="{$app_url}/index.php" id="logo">{$page_header|default:"AAAaaaa"}</a></h1>
 
             <div><em>Zalogowano jako:
-                    <?php print($role)?>
+                    {$role|default: "---"}
                 </em></div>
 
             <!-- Nav -->

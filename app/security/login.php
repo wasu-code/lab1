@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__FILE__).'/../../config.php';
+require_once _ROOT_PATH.'/lib/smarty/Smarty.class.php';
 
 $form = array();
 $messages = array();
@@ -49,15 +50,24 @@ function validateLogin(&$form,&$messages){
 	return false; 
 }
 
-if (!validateLogin($form,$messages)) {
-	//jeśli błąd logowania to wyświetl formularz z tekstami z $messages
-	include _ROOT_PATH.'/app/security/login_view.php';
+$smarty = new Smarty();
+$smarty->assign('app_url',_APP_URL);
+$smarty->assign('root_path',_ROOT_PATH);
+
+$smarty->assign('page_title','Logowanie');
+$smarty->assign('page_desc','zaloguj się');
+$smarty->assign('page_header','Logowanie');
+
+$smarty->assign('form',$form);
+$smarty->assign('messages',$messages);
+$smarty->assign('role',isset($_SESSION['role']) ? $_SESSION['role'] : 'gość');
+
+
+if (!validateLogin($form,$messages)){ 
+	$smarty->display(_ROOT_PATH.'/app/security/login.tpl');
 } else { 
-	//ok przekieruj lub "forward" na stronę główną
-	
-	//redirect - przeglądarka dostanie ten adres do "przejścia" na niego (wysłania kolejnego żądania)
 	header("Location: "._APP_URL);
-	
-	//"forward"
-	//include _ROOT_PATH.'/index.php';
 }
+
+	
+?>

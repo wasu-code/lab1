@@ -81,7 +81,8 @@ $smarty->assign('root_path',_ROOT_PATH);
 
 $smarty->assign('page_title','Kalkulator');
 $smarty->assign('page_desc','liczysz na cud? Użyj naszego kalkulatora.');
-$smarty->assign('page_header','exmple');
+$smarty->assign('page_header','Kalkulator');
+$smarty->assign('role',isset($_SESSION['role']) ? $_SESSION['role'] : '???');
 
 $smarty->assign('params',$params);
 $smarty->assign('result',$result);
