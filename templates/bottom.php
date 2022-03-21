@@ -1,5 +1,5 @@
 
-			</div>
+			</div><!--content-->
 			<!-- Footer -->
             <div id="footer">
 				<div id="disclaimer"> 🛈 Powyższy kalkulator może nie przedstawiać poprawnych wyników i został stworzony jedynie w celach edukacyjnych.</div>
