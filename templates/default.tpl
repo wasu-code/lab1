@@ -19,7 +19,7 @@
             <h1><a href="{$app_url}/index.php" id="logo">{$page_header|default:"AAAaaaa"}</a></h1>
 
             <div><em>Zalogowano jako:
-                    {$role|default: "---"}
+                    {$smarty.session['role']|default: "gość"}
                 </em></div>
 
             <!-- Nav -->

@@ -60,7 +60,6 @@ $smarty->assign('page_header','Logowanie');
 
 $smarty->assign('form',$form);
 $smarty->assign('messages',$messages);
-$smarty->assign('role',isset($_SESSION['role']) ? $_SESSION['role'] : 'gość');
 
 
 if (!validateLogin($form,$messages)){ 

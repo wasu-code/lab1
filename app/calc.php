@@ -1,6 +1,7 @@
 <?php
 require_once dirname(__FILE__).'/../config.php';
 require_once _ROOT_PATH.'/lib/smarty/Smarty.class.php';
+session_start();
 
 $params=array();
 $messages=array();
@@ -82,7 +83,6 @@ $smarty->assign('root_path',_ROOT_PATH);
 $smarty->assign('page_title','Kalkulator');
 $smarty->assign('page_desc','liczysz na cud? Użyj naszego kalkulatora.');
 $smarty->assign('page_header','Kalkulator');
-$smarty->assign('role',isset($_SESSION['role']) ? $_SESSION['role'] : '???');
 
 $smarty->assign('params',$params);
 $smarty->assign('result',$result);

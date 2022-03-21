@@ -13,7 +13,6 @@ $about->assign('root_path',_ROOT_PATH);
 $about->assign('page_title','O nas');
 $about->assign('page_desc','liczysz na cud? Użyj naszego kalkulatora.');
 $about->assign('page_header','O nas');
-$about->assign('role',isset($_SESSION['role']) ? $_SESSION['role'] : 'gość');
 	
 
 $about->display(_ROOT_PATH.'/app/about.tpl')
