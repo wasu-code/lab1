@@ -1,6 +1,6 @@
 <?php
 require_once dirname(__FILE__).'/../../config.php';
-require_once _ROOT_PATH.'/lib/smarty/Smarty.class.php';
+require_once $cfg->root_path.'/lib/smarty/Smarty.class.php';
 
 $form = array();
 $messages = array();
@@ -51,8 +51,8 @@ function validateLogin(&$form,&$messages){
 }
 
 $smarty = new Smarty();
-$smarty->assign('app_url',_APP_URL);
-$smarty->assign('root_path',_ROOT_PATH);
+$smarty->assign('app_url',$cfg->app_url);
+$smarty->assign('root_path',$cfg->root_path);
 
 $smarty->assign('page_title','Logowanie');
 $smarty->assign('page_desc','zaloguj się');
@@ -63,9 +63,9 @@ $smarty->assign('messages',$messages);
 
 
 if (!validateLogin($form,$messages)){ 
-	$smarty->display(_ROOT_PATH.'/app/security/login.tpl');
+	$smarty->display($cfg->root_path.'/app/security/login.tpl');
 } else { 
-	header("Location: "._APP_URL);
+	header("Location: ".$cfg->app_url);
 }
 
 	
