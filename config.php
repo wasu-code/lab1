@@ -1,8 +1,14 @@
 <?php
-define('_SERVER_NAME', 'localhost');
-define('_SERVER_URL', 'http://'._SERVER_NAME);
-define('_APP_ROOT', '/lab1');
-define('_APP_URL', _SERVER_URL._APP_ROOT);
-define("_ROOT_PATH", dirname(__FILE__));
+require_once 'Config.class.php';
+
+$cfg = new Config();
+
+$cfg->server_name = 'localhost:80';
+$cfg->app_root = '/lab1';
+
+$cfg->server_url = 'http://'.$cfg->server_name;
+
+$cfg->root_path = dirname(__FILE__);
+$cfg->app_url = $cfg->server_url.$cfg->app_root;
 
 ?>
