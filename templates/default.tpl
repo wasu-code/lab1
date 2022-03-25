@@ -25,8 +25,8 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li class="{$current1|default:''}"><a href="{$app_url}">Kalkulator</a></li>
-                    <li class="{$current2|default:''}"><a href="{$app_url}/app/about.php">O nas</a></li>
+                    <li class="{$current1|default:''}"><a href="{$app_url}/app/ctrl.php">Kalkulator</a></li>
+                    <li class="{$current2|default:''}"><a href="{$app_url}/app/about/about.php">O nas</a></li>
                     <li class="{$current3|default:''}"><a href="{$app_url}/app/security/logout.php">Wyloguj</a></li>
                 </ul>
             </nav>

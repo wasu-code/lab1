@@ -1,9 +1,9 @@
-{extends file="../templates/default.tpl"}
+{extends file=$cfg->root_path|cat:'/templates/default.tpl'}
 
 {block name="content"}
 
 <div id="id_calc">
-<form action="{$app_url}/app/calc.php" method="post">
+<form action="{$cfg->action_root}calcCompute" method="post">
 	<label for="id_kwota" >Kwota: </label>
 	<input  id="id_kwota" type="text" name="kwota" value="{$params->kwota}" /><br />
 	

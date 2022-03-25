@@ -2,8 +2,8 @@
 ////
 require_once $cfg->root_path.'/lib/smarty/Smarty.class.php';
 require_once $cfg->root_path.'/lib/Messages.class.php';
-require_once $cfg->root_path.'/app/CalcForm.class.php';
-require_once $cfg->root_path.'/app/CalcResult.class.php';
+require_once $cfg->root_path.'/app/calc/CalcForm.class.php';
+require_once $cfg->root_path.'/app/calc/CalcResult.class.php';
 ////
 
 class CalcCtrl {
@@ -89,9 +89,9 @@ class CalcCtrl {
 
         $smarty = new Smarty();
 
-        $smarty->assign('conf',$cfg);
-        $smarty->assign('app_url',$cfg->app_url);
-        $smarty->assign('root_path',$cfg->root_path);
+        $smarty->assign('cfg',$cfg);
+        $smarty->assign('app_url',$cfg->app_url); //++
+        $smarty->assign('root_path',$cfg->root_path); //++
 
         $smarty->assign('page_title','Kalkulator Kredytowy');
         $smarty->assign('page_desc','liczysz na cud? Użyj naszego kalkulatora.');
@@ -104,7 +104,7 @@ class CalcCtrl {
         $smarty->assign('current1',"current"); //rozwiązanie tymczasowe
         $smarty->assign('current2',"");
         $smarty->assign('current3',"");
-        $smarty->display($cfg->root_path.'/app/calc.tpl');
+        $smarty->display($cfg->root_path.'/app/calc/calc.tpl');
     }
 
 
