@@ -25,6 +25,10 @@ class Messages {
 	public function isInfo() {
 		return count ( $this->infos ) > 0;
 	}
+
+	public function isMessage() {
+		return count ( $this->infos ) > 0 || count ( $this->errors ) > 0;
+	}
 	
 	public function getErrors() {
 		return $this->errors;

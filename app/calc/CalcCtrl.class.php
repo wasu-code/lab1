@@ -90,8 +90,8 @@ class CalcCtrl {
         $smarty = new Smarty();
 
         $smarty->assign('cfg',$cfg);
-        $smarty->assign('app_url',$cfg->app_url); //++
-        $smarty->assign('root_path',$cfg->root_path); //++
+        //$smarty->assign('app_url',$cfg->app_url); //++
+        //$smarty->assign('root_path',$cfg->root_path); //++
 
         $smarty->assign('page_title','Kalkulator Kredytowy');
         $smarty->assign('page_desc','liczysz na cud? Użyj naszego kalkulatora.');

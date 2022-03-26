@@ -4,8 +4,8 @@
     <title>{$page_title|default:"Z powodu kryzysu nie ma napisu"}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="{$app_url}/templates/assets/css/main.css" />
-    <link rel="stylesheet" href="{$app_url}/main.css" />
+    <link rel="stylesheet" href="{$cfg->app_url}/templates/assets/css/main.css" />
+    <link rel="stylesheet" href="{$cfg->app_url}/main.css" />
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 </head>
 
@@ -16,18 +16,18 @@
         <div id="header">
 
             <!-- Logo -->
-            <h1><a href="{$app_url}/index.php" id="logo">{$page_header|default:"AAAaaaa"}</a></h1>
+            <h1><a href="{$cfg->app_url}/index.php" id="logo">{$page_header|default:"AAAaaaa"}</a></h1>
 
-            <div><em>Zalogowano jako:
+            <div><em>Poziom dostępu:
                     {$smarty.session['role']|default: "gość"}
                 </em></div>
 
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li class="{$current1|default:''}"><a href="{$app_url}/app/ctrl.php">Kalkulator</a></li>
-                    <li class="{$current2|default:''}"><a href="{$app_url}/app/about/about.php">O nas</a></li>
-                    <li class="{$current3|default:''}"><a href="{$app_url}/app/security/logout.php">Wyloguj</a></li>
+                    <li class="{$current1|default:''}"><a href="{$cfg->app_url}/app/ctrl.php">Kalkulator</a></li>
+                    <li class="{$current2|default:''}"><a href="{$cfg->app_url}/app/about/about.php">O nas</a></li>
+                    <li class="{$current3|default:''}"><a href="{$cfg->app_url}/app/security/logout.php">Wyloguj</a></li>
                 </ul>
             </nav>
 

@@ -1,11 +1,11 @@
-{extends file="../../templates/default.tpl"}
+{extends file=$cfg->root_path|cat:'/templates/default.tpl'}
 
 {block name="content"}
 
 
 <div style="width:90%; margin: 2em auto;">
 
-<form action="{$app_url}/app/security/login.php" method="post" class="pure-form pure-form-stacked">
+<form action="{$cfg->app_url}/app/security/login.php" method="post" class="pure-form pure-form-stacked">
 	<legend>Logowanie</legend>
 	<fieldset>
 		<label for="id_login">login: </label>
