@@ -104,6 +104,7 @@ class CalcCtrl {
         $smarty->assign('current1',"current"); //rozwiązanie tymczasowe
         $smarty->assign('current2',"");
         $smarty->assign('current3',"");
+        $smarty->assign('current',"calc");//++
         $smarty->display($cfg->root_path.'/app/calc/calc.tpl');
     }
 

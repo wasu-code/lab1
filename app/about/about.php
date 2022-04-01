@@ -13,6 +13,7 @@ $about->assign('cfg',$cfg);
 $about->assign('page_title','O nas');
 $about->assign('page_desc','liczysz na cud? Użyj naszego kalkulatora.');
 $about->assign('page_header','O nas');
+$about->assign('current','about');
 	
 
 $about->display($cfg->root_path.'/app/about/about.tpl')
