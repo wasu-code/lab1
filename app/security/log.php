@@ -1,4 +1,43 @@
 <?php
+
+require_once dirname(__FILE__).'/../../config.php';
+
+$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : 'logCheck';
+
+session_start();
+
+switch ($action) {
+    default: //calcView
+        require_once $cfg->root_path.'/app/security/LogCtrl.class.php';
+		$log = new LogCtrl();
+		$log->check();
+    break;
+	case 'logCheck':
+        require_once $cfg->root_path.'/app/security/LogCtrl.class.php';
+		$log = new LogCtrl();
+		$log->check();
+	break;
+    case 'logIn':
+        require_once $cfg->root_path.'/app/security/LogCtrl.class.php';
+		$log = new LogCtrl();
+		$log->logIn();
+    break;
+    case 'logOut':
+        require_once $cfg->root_path.'/app/security/LogCtrl.class.php';
+		$log = new LogCtrl();
+		$log->logOut();
+    break;
+}
+
+
+
+
+
+
+
+
+
+/*
 require_once dirname(__FILE__).'/../../config.php';
 require_once $cfg->root_path.'/lib/smarty/Smarty.class.php';
 
@@ -69,5 +108,5 @@ if (!validateLogin($form,$messages)){
 	header("Location: ".$cfg->app_url);
 }
 
-	
+	*/
 ?>

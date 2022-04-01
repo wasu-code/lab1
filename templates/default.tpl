@@ -27,7 +27,7 @@
                 <ul>
                     <li class="{$current1|default:''}"><a href="{$cfg->app_url}/app/ctrl.php">Kalkulator</a></li>
                     <li class="{$current2|default:''}"><a href="{$cfg->app_url}/app/about/about.php">O nas</a></li>
-                    <li class="{$current3|default:''}"><a href="{$cfg->app_url}/app/security/logout.php">Wyloguj</a></li>
+                    <li class="{$current3|default:''}"><a href="{$cfg->app_url}/app/security/log.php?action=logOut">Wyloguj</a></li>
                 </ul>
             </nav>
 

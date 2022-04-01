@@ -5,11 +5,11 @@
 
 <div style="width:90%; margin: 2em auto;">
 
-<form action="{$cfg->app_url}/app/security/login.php" method="post" class="pure-form pure-form-stacked">
+<form action="{$cfg->app_url}/app/security/log.php?action=logIn" method="post" class="pure-form pure-form-stacked">
 	<legend>Logowanie</legend>
 	<fieldset>
 		<label for="id_login">login: </label>
-		<input id="id_login" type="text" name="login" value="{$form['login']}" />
+		<input id="id_login" type="text" name="login"  />
 		<label for="id_pass">pass: </label>
 		<input id="id_pass" type="password" name="pass" />
 	</fieldset>
@@ -17,14 +17,21 @@
 </form>	
 
 
-{if (isset($messages)) }
-	{if (count ( $messages ) > 0) }
-		<ol id="id_errors">
-		{foreach from=$messages item=$msg  }
-			<li>{$msg}</li>
+{if ($messages->isMessage())}
+	<h3> Wystąpiły błędy:</h4>
+	<ol id="id_errors">
+		{foreach $messages->getErrors() as $err }
+			{strip} <!--usunięcie nadmiarowych białych znaków-->
+				<li>{$err}</li>
+			{/strip}
 		{/foreach}
-		</ol>
-	{/if}
+		{foreach $messages->getInfos() as $inf }
+			{strip} <!--usunięcie nadmiarowych białych znaków-->
+				<li>{$inf}</li>
+			{/strip}
+		{/foreach}
+	</ol>
+	<script>document.getElementById("id_errors").scrollIntoView();</script>
 {/if}
 
 
