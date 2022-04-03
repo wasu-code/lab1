@@ -1,8 +1,8 @@
-<?php
+<?php namespace app\security;
 
 ////
-require_once $cfg->root_path.'/lib/smarty/Smarty.class.php';
-require_once $cfg->root_path.'/lib/Messages.class.php';
+//use lib\smart\Smarty;
+use lib\Messages;
 ////
 
 class LogCtrl {

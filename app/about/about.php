@@ -1,7 +1,5 @@
 <?php
 require_once dirname(__FILE__).'/../../init.php';
-//require_once dirname(__FILE__).'/../../config.php';
-//require_once $cfg->root_path.'/lib/smarty/Smarty.class.php';
 
 include $cfg->root_path.'/app/security/log.php';
 

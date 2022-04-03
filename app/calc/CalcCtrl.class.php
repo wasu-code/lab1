@@ -1,9 +1,7 @@
-<?php
+<?php namespace app\calc;
 ////
-//require_once $cfg->root_path.'/lib/smarty/Smarty.class.php';
-//require_once $cfg->root_path.'/lib/Messages.class.php';
-require_once 'CalcForm.class.php';
-require_once 'CalcResult.class.php';
+use app\calc\CalcForm;
+use app\calc\CalcResult;
 ////
 
 class CalcCtrl {
