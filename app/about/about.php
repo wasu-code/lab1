@@ -1,21 +1,20 @@
 <?php
-require_once dirname(__FILE__).'/../../config.php';
-require_once $cfg->root_path.'/lib/smarty/Smarty.class.php';
+require_once dirname(__FILE__).'/../../init.php';
+//require_once dirname(__FILE__).'/../../config.php';
+//require_once $cfg->root_path.'/lib/smarty/Smarty.class.php';
 
 include $cfg->root_path.'/app/security/log.php';
 
-$about = new Smarty();
+//$about = new Smarty();
 
-$about->assign('cfg',$cfg);
-//$about->assign('app_url',$cfg->app_url);//++
-//$about->assign('root_path',$cfg->root_path);//++
+//$about->assign('cfg',$cfg);
 
-$about->assign('page_title','O nas');
-$about->assign('page_desc','liczysz na cud? Użyj naszego kalkulatora.');
-$about->assign('page_header','O nas');
-$about->assign('current','about');
+getSmarty()->assign('page_title','O nas');
+getSmarty()->assign('page_desc','liczysz na cud? Użyj naszego kalkulatora.');
+getSmarty()->assign('page_header','O nas');
+getSmarty()->assign('current','about');
 	
 
-$about->display($cfg->root_path.'/app/about/about.tpl')
+getSmarty()->display('about.tpl')
 ?>
 

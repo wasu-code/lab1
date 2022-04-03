@@ -7,11 +7,11 @@ require_once $cfg->root_path.'/lib/Messages.class.php';
 
 class LogCtrl {
     private $role;
-    private $msgs;
+    //private $msgs;
     private $form;
 
     public function __construct() {
-        $this->msgs = new Messages();
+        //$this->msgs = new Messages();
 		//$this->form = new CalcForm();
     }
 
@@ -58,14 +58,14 @@ class LogCtrl {
     
         // czy potrzebne wartości zostały przekazane
         if ( $this->form['login'] == "") {
-            $this->msgs->addError('Nie podano loginu');
+            getMessages()->addError('Nie podano loginu');
         }
         if ( $this->form['pass'] == "") {
-            $this->msgs->addError('Nie podano hasła');
+            getMessages()->addError('Nie podano hasła');
         }
     
         //gdy brak parametrów -> koniec
-        if (!$this->msgs->isEmpty()) return false;
+        if (!getMessages()->isEmpty()) return false;
     
         //sprawdzenie urzytkownika/hasła i nadanie roli
         if ($this->form['login'] == "admin" && $this->form['pass'] == "admin") {
@@ -78,27 +78,24 @@ class LogCtrl {
         }
         
         // gdy żaden z użytkowników w "bazie"
-        $this->msgs->addError('Niepoprawny login lub hasło');
+        getMessages()->addError('Niepoprawny login lub hasło');
         return false; 
     }
 
     function getParamsLogin(){
-        $this->form['login'] = isset ($_REQUEST ['login']) ? $_REQUEST ['login'] : null;
-        $this->form['pass'] = isset ($_REQUEST ['pass']) ? $_REQUEST ['pass'] : null;
+        $this->form['login'] = getFromRequest('login');
+        $this->form['pass'] = getFromRequest('pass');
     }
 
     function generateView() {
-        global $cfg;
-        $smarty = new Smarty();
-        $smarty->assign('cfg',$cfg);
 
-        $smarty->assign('page_title','Logowanie');
-        $smarty->assign('page_desc','zaloguj się');
-        $smarty->assign('page_header','Logowanie');
+        getSmarty()->assign('page_title','Logowanie');
+        getSmarty()->assign('page_desc','zaloguj się');
+        getSmarty()->assign('page_header','Logowanie');
 
-        $smarty->assign('messages',$this->msgs);
+        getSmarty()->assign('messages',getMessages());
 
-        $smarty->display($cfg->root_path.'/app/security/login.tpl');
+        getSmarty()->display('login.tpl');
     }
 
 }

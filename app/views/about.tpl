@@ -1,4 +1,4 @@
-{extends file=$cfg->root_path|cat:'/templates/default.tpl'}
+{extends file='default.tpl'}
 
 {block name="content"}
 <div style="width:90%; margin: 2em auto;">

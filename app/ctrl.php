@@ -1,7 +1,7 @@
 <?php
-require_once dirname(__FILE__).'/../config.php'; //załaduj konfig
+require_once dirname(__FILE__).'/../init.php'; //załaduj konfig
 
-$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
+//$action ustawione w init.php
 session_start();
 switch ($action) {
     default: //calcView

@@ -1,7 +1,7 @@
 <?php
-require_once 'Config.class.php';
+//require_once 'Config.class.php';
 
-$cfg = new Config();
+//$cfg = new Config();
 
 $cfg->server_name = 'localhost:80';
 $cfg->app_root = '/lab1';

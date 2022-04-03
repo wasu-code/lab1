@@ -1,26 +1,26 @@
 <?php
 ////
-require_once $cfg->root_path.'/lib/smarty/Smarty.class.php';
-require_once $cfg->root_path.'/lib/Messages.class.php';
-require_once $cfg->root_path.'/app/calc/CalcForm.class.php';
-require_once $cfg->root_path.'/app/calc/CalcResult.class.php';
+//require_once $cfg->root_path.'/lib/smarty/Smarty.class.php';
+//require_once $cfg->root_path.'/lib/Messages.class.php';
+require_once 'CalcForm.class.php';
+require_once 'CalcResult.class.php';
 ////
 
 class CalcCtrl {
-    private $msgs;
+    //private $msgs; już załadowane
     private $form;
     private $res;
 
     public function __construct() {
-        $this->msgs = new Messages();
+        //$this->msgs = new Messages();
 		$this->form = new CalcForm();
 		$this->res = new CalcResult();
     }
 
     public function getParams(){
-		$this->form->kwota = isset($_REQUEST ['kwota']) ? $_REQUEST ['kwota'] : null;
-		$this->form->lata = isset($_REQUEST ['lata']) ? $_REQUEST ['lata'] : null;
-		$this->form->op = isset($_REQUEST ['oprocentowanie']) ? $_REQUEST ['oprocentowanie'] : null;
+		$this->form->kwota = getFromRequest('kwota');
+		$this->form->lata = getFromRequest('lata');
+		$this->form->op = getFromRequest('oprocentowanie');
 	}
 
     function validate() {
@@ -31,44 +31,46 @@ class CalcCtrl {
 
         //sprawdzenie czy podano parametry
         if ($this->form->kwota=="") { 
-            $this->msgs->addError("Nie podano kwoty.");
+            getMessages()->addError("Nie podano kwoty.");
             //return false;
         }
         if ($this->form->lata=="") {
-            $this->msgs->addError("Nie podano lat.");
+            getMessages()->addError("Nie podano lat.");
             //return false;
         }
         if ($this->form->op=="") {
-            $this->msgs->addError("Nie podano oprocentowania.");
+            getMessages()->addError("Nie podano oprocentowania.");
             //return false;
         }
     
-        if (!$this->msgs->isError()) {//jeśli nie wystąppiły błedy
+        if (!getMessages()->isError()) {//jeśli nie wystąppiły błedy
             //sprawdzenie czy liczby całkowite
             if (! is_numeric($this->form->kwota)) {
-                $this->msgs->addError("Kwota nie jest liczbą");
+                getMessages()->addError("Kwota nie jest liczbą");
                 return false;
             }
             if (! is_numeric($this->form->lata)) {
-                $this->msgs->addError("Ilość lat nie jest liczbą");
+                getMessages()->addError("Ilość lat nie jest liczbą");
                 return false;
             }
             if (! is_numeric($this->form->op)) {
-                $this->msgs->addError("Oprocentowanie nie jest liczbą");
+                getMessages()->addError("Oprocentowanie nie jest liczbą");
                 return false;
             }
         }
-        return !$this->msgs->isError();
+        return !getMessages()->isError();
     }
 
     //jeśli nie ma błędów - obliczenia
     function process() {
-        global $role;
+        //global $role;
+        $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';//++
         $this->getParams();
 
         if ($this->validate()) {
             if ($role=='admin') {
-                $this->msgs->addInfo('Administrator nie powinien wykonywać obliczeń. Użyj konta gościa.');
+                getMessages()->addInfo('Administrator nie powinien wykonywać obliczeń. Użyj konta gościa.');
+                getMessages()->addInfo('Nie wykonano obliczeń.');
             } else {
                 //zmiana parametrów na wartości liczbowe
                 $this->form->kwota=round(floatval($this->form->kwota),2);
@@ -77,35 +79,30 @@ class CalcCtrl {
                 //obliczenia
                 $this->res->result=($this->form->kwota + $this->form->kwota * $this->form->op / 100)/($this->form->lata * 12);
                 $this->res->result=round($this->res->result,2);
+                getMessages()->addInfo('Wykonano obliczenia.');
             }
-            $this->msgs->addInfo('Wykonano obliczenia.');
         }
         $this->generateView();
     }
 
     //generowanie widoku - przygotowanie danych dla szbalonu
     public function generateView() {
-        global $cfg;
+        //global $cfg;
 
-        $smarty = new Smarty();
+        //$smarty = new Smarty();
 
-        $smarty->assign('cfg',$cfg);
-        //$smarty->assign('app_url',$cfg->app_url); //++
-        //$smarty->assign('root_path',$cfg->root_path); //++
+        //$smarty->assign('cfg',$cfg);
 
-        $smarty->assign('page_title','Kalkulator Kredytowy');
-        $smarty->assign('page_desc','liczysz na cud? Użyj naszego kalkulatora.');
-        $smarty->assign('page_header','Kalkulator');
+        getSmarty()->assign('page_title','Kalkulator Kredytowy');
+        getSmarty()->assign('page_desc','liczysz na cud? Użyj naszego kalkulatora.');
+        getSmarty()->assign('page_header','Kalkulator');
 
-        $smarty->assign('params',$this->form);
-        $smarty->assign('result',$this->res);
-        $smarty->assign('messages',$this->msgs);
+        getSmarty()->assign('params',$this->form);
+        getSmarty()->assign('result',$this->res);
+        getSmarty()->assign('messages',getMessages());
 
-        $smarty->assign('current1',"current"); //rozwiązanie tymczasowe
-        $smarty->assign('current2',"");
-        $smarty->assign('current3',"");
-        $smarty->assign('current',"calc");//++
-        $smarty->display($cfg->root_path.'/app/calc/calc.tpl');
+        getSmarty()->assign('current',"calc");
+        getSmarty()->display('calc.tpl');
     }
 
 

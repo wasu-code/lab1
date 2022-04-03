@@ -4,8 +4,8 @@
     <title>{$page_title|default:"Z powodu kryzysu nie ma napisu"}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="{$cfg->app_url}/templates/assets/css/main.css" />
-    <link rel="stylesheet" href="{$cfg->app_url}/main.css" />
+    <link rel="stylesheet" href="{$cfg->app_url}/app/views/templates/assets/css/main.css" />
+    <link rel="stylesheet" href="{$cfg->app_url}/css/main.css" />
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 </head>
 
