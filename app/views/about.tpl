@@ -2,8 +2,8 @@
 
 {block name="content"}
 <div style="width:90%; margin: 2em auto;">
-	<a href="{$cfg->app_url}/app/calc.php" class="pure-button">Powrót do kalkulatora</a>
-	<a href="{$cfg->app_url}/app/security/log.php?action=logOut" class="pure-button pure-button-active">Wyloguj</a>
+	<a href="{$cfg->action_url}showCalc" class="pure-button">Powrót do kalkulatora</a>
+	<a href="{$cfg->action_url}logOut" class="pure-button pure-button-active">Wyloguj</a>
 </div>
 
 <div style="width:90%; margin: 2em auto;">

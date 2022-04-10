@@ -1,24 +1,23 @@
-<?php namespace app\security;
+<?php namespace app\controllers;
 
 ////
-//use lib\smart\Smarty;
 use lib\Messages;
+use app\security\dataholders\User;
+use app\security\dataholders\LoginForm;
 ////
 
 class LogCtrl {
-    private $role;
-    //private $msgs;
+    //private $role;
     private $form;
 
     public function __construct() {
-        //$this->msgs = new Messages();
-		//$this->form = new CalcForm();
+        $this->form = new LoginForm();
     }
 
-    function check() {
+    /*public function action_logCheck() {
         
-        global $cfg;
-        $this->role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
+        //global $cfg;
+        $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
         //jeśli brak parametru (niezalogowanie) to idź na stronę logowania
         if ( empty($this->role) ){
           //include $this->cfg->root_path.'/app/security/login.php';
@@ -27,18 +26,18 @@ class LogCtrl {
           //zatrzymaj dalsze przetwarzanie skryptów
           exit();
         }
-    }
+    }*/
 
-    function logOut() {
-        global $cfg;
+    function action_logOut() {
+        //global $cfg;
         session_destroy(); //zakończ sesję dla tego użytkownika
-
+        getMessages()->addInfo('Poprawnie wylogowano z systemu');
         // 2. przekieruj lub "forward" na stronę główną
         //redirect
-        header("Location: ".$cfg->app_url);
+        $this->generateView();
     }
 
-    function logIn() {
+    function action_logIn() {
         global $cfg;
         $this->getParamsLogin();
 
@@ -51,16 +50,16 @@ class LogCtrl {
 
     function validateLogin(){
         // czy parametry zostały przekazane
-        if ( ! (isset($this->form['login']) && isset($this->form['pass']))) {
+        if ( ! (isset($this->form->login) && isset($this->form->pass))) {
             //sytuacja wystąpi kiedy np. kontroler zostanie wywołany bezpośrednio - nie z formularza
             return false;
         }
     
         // czy potrzebne wartości zostały przekazane
-        if ( $this->form['login'] == "") {
+        if ( $this->form->login == "") {
             getMessages()->addError('Nie podano loginu');
         }
-        if ( $this->form['pass'] == "") {
+        if ( $this->form->pass == "") {
             getMessages()->addError('Nie podano hasła');
         }
     
@@ -68,23 +67,30 @@ class LogCtrl {
         if (!getMessages()->isEmpty()) return false;
     
         //sprawdzenie urzytkownika/hasła i nadanie roli
-        if ($this->form['login'] == "admin" && $this->form['pass'] == "admin") {
-            $_SESSION['role'] = 'admin';
-            return true;
-        }
-        if ($this->form['login'] == "user" && $this->form['pass'] == "user") {
-            $_SESSION['role'] = 'user';
-            return true;
+        if ($this->form->login == "admin" && $this->form->pass == "admin") {
+            $user = new User($this->form->login, 'admin');
+
+            $_SESSION['user'] = serialize($user);
+            addRole($user->role);
+            //return true;
+        } else if ($this->form->login == "user" && $this->form->pass == "user") {
+            $user = new User($this->form->login, 'user');
+            $_SESSION['user'] = serialize($user);
+            addRole($user->role);
+            //return true; 
+        } else {
+            getMessages()->addError('Niepoprawny login lub hasło');
         }
         
         // gdy żaden z użytkowników w "bazie"
-        getMessages()->addError('Niepoprawny login lub hasło');
-        return false; 
+        //getMessages()->addError('Niepoprawny login lub hasło');
+        //return false; 
+        return ! getMessages()->isError();
     }
 
     function getParamsLogin(){
-        $this->form['login'] = getFromRequest('login');
-        $this->form['pass'] = getFromRequest('pass');
+        $this->form->login = getFromRequest('login');
+        $this->form->pass = getFromRequest('pass');
     }
 
     function generateView() {

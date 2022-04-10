@@ -3,10 +3,10 @@ require_once dirname(__FILE__).'/../../init.php';
 
 //$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : 'logCheck'; 
 //action ustawione w init.php
+aa
+//session_start();
 
-session_start();
-
-switch ($action) {
+/*switch ($action) {
     default: //logCheck
         //require_once $cfg->root_path.'/app/security/LogCtrl.class.php';
 		$log = new app\security\LogCtrl();
@@ -28,6 +28,6 @@ switch ($action) {
 		$log->logOut();
     break;
 }
-
+*/
 
 ?>

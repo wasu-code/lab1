@@ -1,7 +1,7 @@
 <?php
 require_once dirname(__FILE__).'/../../init.php';
 
-include $cfg->root_path.'/app/security/log.php';
+//include $cfg->app_url.'/app/security/log.php';
 
 //$about = new Smarty();
 

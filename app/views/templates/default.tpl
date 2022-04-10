@@ -19,15 +19,19 @@
             <h1><a href="{$cfg->app_url}/index.php" id="logo">{$page_header|default:"AAAaaaa"}</a></h1>
 
             <div><em>Zalogowano jako:
-                    {$smarty.session['role']|default: "gość"}
+                    {if empty($user)}
+                        gość
+                    {else}
+                        {$user->login}
+                    {/if}
                 </em></div>
 
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li class="{if (isset($current) && $current=='calc')}current{/if}"><a href="{$cfg->app_url}/app/ctrl.php">Kalkulator</a></li>
-                    <li class="{if (isset($current) && $current=='about')}current{/if}"><a href="{$cfg->app_url}/app/about/about.php">O nas</a></li>
-                    <li class=""><a href="{$cfg->app_url}/app/security/log.php?action=logOut">Wyloguj</a></li>
+                    <li class="{if (isset($current) && $current=='calc')}current{/if}"><a href="{$cfg->action_url}calcShow">Kalkulator</a></li>
+                    <li class="{if (isset($current) && $current=='about')}current{/if}"><a href="{$cfg->action_url}aboutShow">O nas</a></li>
+                    <li class=""><a href="{$cfg->action_url}logOut">Wyloguj</a></li>
                 </ul>
             </nav>
 

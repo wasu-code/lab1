@@ -1,7 +1,5 @@
-app/about/templates_c/06ae5bf829448c5ad4f157d2b00a39e8be64e90d_0.file.about.tpl.php
-app/about/templates_c/60ae07b57656fb09cf67c742937316e49f35ae48_0.file.login.tpl.php
-app/about/templates_c/95345cab51440a5c9f19c5ab5e59156c30726a0b_0.file.default.tpl.php
-app/templates_c/241b244ed6df0b6254d2f9f14c565fb2b1ff7510_0.file.calc.tpl.php
-templates_c/43fae6e2369041d742d16f40ed4c076a21fdb172_0.file.calc.tpl.php
-app/security/templates_c/55678ebdf663f86a9789181bce176b0c08c9b941_0.file.login.tpl.php
-app/security/templates_c/55208581cc33d710d9eb390e24b34a75815551c2_0.file.default.tpl.php
+app/about/templates_c/
+app/security/templates_c/
+.vscode/launch.json
+app/templates_c/
+templates_c/

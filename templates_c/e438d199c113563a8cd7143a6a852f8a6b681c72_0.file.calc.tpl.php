@@ -1,33 +1,34 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-04-03 18:53:27
+/* Smarty version 4.1.0, created on 2022-04-10 14:47:55
   from 'D:\xampp\htdocs\lab1\app\views\calc.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6249d107e9c061_77263066',
+  'unifunc' => 'content_6252d1fb416718_37980183',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e438d199c113563a8cd7143a6a852f8a6b681c72' => 
     array (
       0 => 'D:\\xampp\\htdocs\\lab1\\app\\views\\calc.tpl',
-      1 => 1649004073,
+      1 => 1649587027,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:messagebox.tpl' => 1,
   ),
 ),false)) {
-function content_6249d107e9c061_77263066 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6252d1fb416718_37980183 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18217831156249d107e8b722_25526611', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_4457406476252d1fb406244_86424003', "content");
 ?>
 
 
@@ -35,12 +36,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18217831156249d107
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'default.tpl');
 }
 /* {block "content"} */
-class Block_18217831156249d107e8b722_25526611 extends Smarty_Internal_Block
+class Block_4457406476252d1fb406244_86424003 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_18217831156249d107e8b722_25526611',
+    0 => 'Block_4457406476252d1fb406244_86424003',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -66,45 +67,8 @@ calcCompute" method="post">
 </form>	
 
 
-<?php if (($_smarty_tpl->tpl_vars['messages']->value->isError())) {?>
-	<h3> Wystąpiły błędy:</h4>
-	<ol id="id_errors">
-		<?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['messages']->value->getErrors(), 'err');
-$_smarty_tpl->tpl_vars['err']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['err']->value) {
-$_smarty_tpl->tpl_vars['err']->do_else = false;
+<?php $_smarty_tpl->_subTemplateRender('file:messagebox.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-			 <!--usunięcie nadmiarowych białych znaków--><li><?php echo $_smarty_tpl->tpl_vars['err']->value;?>
-</li>
-		<?php
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-	</ol>
-	<?php echo '<script'; ?>
->document.getElementById("id_errors").scrollIntoView();<?php echo '</script'; ?>
->
-<?php }?>
-
-<?php if (($_smarty_tpl->tpl_vars['messages']->value->isInfo())) {?>
-	<h3> Informacje:</h4>
-	<ol id="id_infos">
-		<?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['messages']->value->getInfos(), 'inf');
-$_smarty_tpl->tpl_vars['inf']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['inf']->value) {
-$_smarty_tpl->tpl_vars['inf']->do_else = false;
-?>
-			 <!--usunięcie nadmiarowych białych znaków--><li><?php echo $_smarty_tpl->tpl_vars['inf']->value;?>
-</li>
-		<?php
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-	</ol>
-	<?php echo '<script'; ?>
->document.getElementById("id_infos").scrollIntoView();<?php echo '</script'; ?>
->
-<?php }?>
 
 
 <?php if (((isset($_smarty_tpl->tpl_vars['result']->value->result)))) {?>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-04-03 18:56:09
+/* Smarty version 4.1.0, created on 2022-04-10 16:14:53
   from 'D:\xampp\htdocs\lab1\app\views\templates\default.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6249d1a96dc991_00395043',
+  'unifunc' => 'content_6252e65decc608_37774283',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b9a3db2966d0a532701b355730ad26abefc3af7e' => 
     array (
       0 => 'D:\\xampp\\htdocs\\lab1\\app\\views\\templates\\default.tpl',
-      1 => 1649004968,
+      1 => 1649600067,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6249d1a96dc991_00395043 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6252e65decc608_37774283 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -50,26 +50,30 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 </a></h1>
 
             <div><em>Zalogowano jako:
-                    <?php echo (($tmp = $_SESSION['role'] ?? null)===null||$tmp==='' ? "gość" ?? null : $tmp);?>
+                    <?php if (empty($_smarty_tpl->tpl_vars['user']->value)) {?>
+                        gość
+                    <?php } else { ?>
+                        <?php echo $_smarty_tpl->tpl_vars['user']->value->login;?>
 
+                    <?php }?>
                 </em></div>
 
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li class="<?php if (((isset($_smarty_tpl->tpl_vars['current']->value)) && $_smarty_tpl->tpl_vars['current']->value == 'calc')) {?>current<?php }?>"><a href="<?php echo $_smarty_tpl->tpl_vars['cfg']->value->app_url;?>
-/app/ctrl.php">Kalkulator</a></li>
-                    <li class="<?php if (((isset($_smarty_tpl->tpl_vars['current']->value)) && $_smarty_tpl->tpl_vars['current']->value == 'about')) {?>current<?php }?>"><a href="<?php echo $_smarty_tpl->tpl_vars['cfg']->value->app_url;?>
-/app/about/about.php">O nas</a></li>
-                    <li class=""><a href="<?php echo $_smarty_tpl->tpl_vars['cfg']->value->app_url;?>
-/app/security/log.php?action=logOut">Wyloguj</a></li>
+                    <li class="<?php if (((isset($_smarty_tpl->tpl_vars['current']->value)) && $_smarty_tpl->tpl_vars['current']->value == 'calc')) {?>current<?php }?>"><a href="<?php echo $_smarty_tpl->tpl_vars['cfg']->value->action_url;?>
+calcShow">Kalkulator</a></li>
+                    <li class="<?php if (((isset($_smarty_tpl->tpl_vars['current']->value)) && $_smarty_tpl->tpl_vars['current']->value == 'about')) {?>current<?php }?>"><a href="<?php echo $_smarty_tpl->tpl_vars['cfg']->value->action_url;?>
+aboutShow">O nas</a></li>
+                    <li class=""><a href="<?php echo $_smarty_tpl->tpl_vars['cfg']->value->action_url;?>
+logOut">Wyloguj</a></li>
                 </ul>
             </nav>
 
         </div>
         <div id="page-content">
             <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6644048846249d1a96dc072_57555919', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21130498886252e65decab13_86342319', "content");
 ?>
 
         </div>
@@ -117,12 +121,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6644048846249d1a96
 
 </html><?php }
 /* {block "content"} */
-class Block_6644048846249d1a96dc072_57555919 extends Smarty_Internal_Block
+class Block_21130498886252e65decab13_86342319 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_6644048846249d1a96dc072_57555919',
+    0 => 'Block_21130498886252e65decab13_86342319',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

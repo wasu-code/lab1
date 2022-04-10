@@ -1,7 +1,7 @@
 <?php
-require_once dirname(__FILE__).'/core/Config.class.php';
+require_once 'core/Config.class.php';
 $cfg = new core\Config();
-include dirname(__FILE__).'/config.php'; //ustaw konfigurację
+include 'config.php'; //ustaw konfigurację
 
 function &getCfg(){ global $cfg; return $cfg; }
 
@@ -38,7 +38,16 @@ function &getLoader() {
     return $cloader;
 }
 
+require_once 'core/Router.class.php'; //załaduj i stwórz router
+$router = new core\Router();
+function &getRouter(): core\Router {
+    global $router; return $router;
+}
 
 require_once getCfg()->root_path.'/core/functions.php';
 
-$action = getFromRequest('action');
+//$action = getFromRequest('action');
+session_start(); //uruchom lub kontynuuj sesję
+$cfg->roles = isset($_SESSION['_roles']) ? unserialize($_SESSION['_roles']) : array(); //wczytaj role
+
+$router->setAction( getFromRequest('action') );

@@ -1,4 +1,4 @@
-<?php namespace app\calc;
+<?php namespace app\controllers;
 ////
 use app\calc\CalcForm;
 use app\calc\CalcResult;
@@ -10,7 +10,6 @@ class CalcCtrl {
     private $res;
 
     public function __construct() {
-        //$this->msgs = new Messages();
 		$this->form = new CalcForm();
 		$this->res = new CalcResult();
     }
@@ -21,7 +20,7 @@ class CalcCtrl {
 		$this->form->op = getFromRequest('oprocentowanie');
 	}
 
-    function validate() {
+    public function validate() {
         if (!(isset($this->form->kwota) && isset($this->form->lata)&&isset($this->form->op))) {
             //$this->msgs->addError('Nie dostarczono wymaganych parametrów.');//np. gdy bezpośrednie wywołanie kontrolera
             return false;
@@ -60,13 +59,13 @@ class CalcCtrl {
     }
 
     //jeśli nie ma błędów - obliczenia
-    function process() {
-        //global $role;
-        $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';//++
+    public function action_calcCompute() {
+        //$role = isset($_SESSION['role']) ? $_SESSION['role'] : '';//++
+        
         $this->getParams();
 
         if ($this->validate()) {
-            if ($role=='admin') {
+            if (inRole('admin)')) {
                 getMessages()->addInfo('Administrator nie powinien wykonywać obliczeń. Użyj konta gościa.');
                 getMessages()->addInfo('Nie wykonano obliczeń.');
             } else {
@@ -83,13 +82,13 @@ class CalcCtrl {
         $this->generateView();
     }
 
+    public function action_calcShow(){
+		//getMessages()->addInfo('Witaj w kalkulatorze');
+		$this->generateView();
+	}
+
     //generowanie widoku - przygotowanie danych dla szbalonu
     public function generateView() {
-        //global $cfg;
-
-        //$smarty = new Smarty();
-
-        //$smarty->assign('cfg',$cfg);
 
         getSmarty()->assign('page_title','Kalkulator Kredytowy');
         getSmarty()->assign('page_desc','liczysz na cud? Użyj naszego kalkulatora.');
@@ -98,7 +97,9 @@ class CalcCtrl {
         getSmarty()->assign('params',$this->form);
         getSmarty()->assign('result',$this->res);
         getSmarty()->assign('messages',getMessages());
-
+        
+        getSmarty()->assign('user',unserialize($_SESSION['user']));//++
+        
         getSmarty()->assign('current',"calc");
         getSmarty()->display('calc.tpl');
     }

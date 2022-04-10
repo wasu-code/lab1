@@ -5,7 +5,7 @@
 
 <div style="width:90%; margin: 2em auto;">
 
-<form action="{$cfg->app_url}/app/security/log.php?action=logIn" method="post" class="pure-form pure-form-stacked">
+<form action="{$cfg->action_root}logIn" method="post" class="pure-form pure-form-stacked">
 	<legend>Logowanie</legend>
 	<fieldset>
 		<label for="id_login">login: </label>
@@ -16,25 +16,7 @@
 	<input type="submit" value="zaloguj" class="pure-button pure-button-primary"/>
 </form>	
 
-
-{if ($messages->isMessage())}
-	<h3> Wystąpiły błędy:</h4>
-	<ol id="id_errors">
-		{foreach $messages->getErrors() as $err }
-			{strip} <!--usunięcie nadmiarowych białych znaków-->
-				<li>{$err}</li>
-			{/strip}
-		{/foreach}
-		{foreach $messages->getInfos() as $inf }
-			{strip} <!--usunięcie nadmiarowych białych znaków-->
-				<li>{$inf}</li>
-			{/strip}
-		{/foreach}
-	</ol>
-	<script>document.getElementById("id_errors").scrollIntoView();</script>
-{/if}
-
-
+{include file='messagebox.tpl'}
 </div>
 
 {/block}
