@@ -31,6 +31,26 @@ function &getSmarty(){
 	return $smarty;
 }
 
+$db = null; //przygotuj Medoo, twórz tylko raz - wtedy kiedy potrzeba
+function &getDB() {
+    global $cfg, $db;
+    if (!isset($db)) {
+        require_once 'lib/medoo/Medoo.php';
+        $db = new \Medoo\Medoo([
+            'database_type' => &$cfg->db_type,
+            'server' => &$cfg->db_server,
+            'database_name' => &$cfg->db_name,
+            'username' => &$cfg->db_user,
+            'password' => &$cfg->db_pass,
+            'charset' => &$cfg->db_charset,
+            'port' => &$cfg->db_port,
+            'prefix' => &$cfg->db_prefix,
+            'option' => &$cfg->db_option
+        ]);
+    }
+    return $db;
+}
+
 require_once 'core/ClassLoader.class.php'; //załaduj i stwórz loader klas
 $cloader = new core\ClassLoader();
 function &getLoader() {

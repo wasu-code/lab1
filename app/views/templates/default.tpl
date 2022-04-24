@@ -31,13 +31,16 @@
                 <ul>
                     <li class="{if (isset($current) && $current=='calc')}current{/if}"><a href="{$cfg->action_url}calcShow">Kalkulator</a></li>
                     <li class="{if (isset($current) && $current=='about')}current{/if}"><a href="{$cfg->action_url}aboutShow">O nas</a></li>
+                    <li class="{if (isset($current) && $current=='userlist')}current{/if}"><a href="{$cfg->action_url}personList">Lista użytkowników</a></li>
                     <li class=""><a href="{$cfg->action_url}logOut">Wyloguj</a></li>
                 </ul>
             </nav>
 
         </div>
         <div id="page-content">
+            {block name="top"}{/block}
             {block name="content"}Nie udało się załadować zawartości{/block}
+            {block name="bottom"}Nie udało się załadować zawartości{/block}
         </div>
         <!-- Footer -->
         <div id="footer">
